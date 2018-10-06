@@ -132,10 +132,10 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -229,11 +229,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.39
+      value: 8.546
       objectReference: {fileID: 0}
     - target: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.38
+      value: -1.796
       objectReference: {fileID: 0}
     - target: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af, type: 2}
       propertyPath: m_LocalPosition.z
@@ -281,10 +281,10 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -311,10 +311,10 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -428,6 +428,48 @@ Prefab:
     - {fileID: 65731405922712948, guid: 6cc9e49859c730141bad7abd3e13c352, type: 2}
     - {fileID: 65940350713336172, guid: 6cc9e49859c730141bad7abd3e13c352, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 6cc9e49859c730141bad7abd3e13c352, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1346278174
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938737479525486, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d7c3dd7117d0e3847853cd078aaeca4d, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1450581912
 GameObject:
@@ -689,10 +731,10 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
