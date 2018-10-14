@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 521819839}
   - component: {fileID: 521819841}
   - component: {fileID: 521819842}
+  - component: {fileID: 521819843}
   m_Layer: 0
   m_Name: Civilian
   m_TagString: Untagged
@@ -378,6 +379,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.56}
   m_EdgeRadius: 0
+--- !u!58 &521819843
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521819838}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 6
 --- !u!4 &537056372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af,
