@@ -15,7 +15,7 @@ public class Civilian : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, Mathf.Infinity);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, Mathf.Infinity);
 
         if (hit.collider != null)
         {
