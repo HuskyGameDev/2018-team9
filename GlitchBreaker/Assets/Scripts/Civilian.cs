@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Civilian : MonoBehaviour {
 
+    public GameObject eye;
+    Stealth stealthScript;
+
 	// Use this for initialization
 	void Start () {
-		
+        stealthScript = eye.GetComponent<Stealth>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +21,11 @@ public class Civilian : MonoBehaviour {
         {
             if (hit.collider.gameObject.name == "Player")
             {
-                print(hit.collider.gameObject.name);
+                stealthScript.playerDetected = true;
+            }
+            else
+            {
+                stealthScript.playerDetected = false;
             }
             
         }
