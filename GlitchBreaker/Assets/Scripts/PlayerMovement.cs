@@ -14,12 +14,13 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-				//Get input from keyboard
+	//Get input from keyboard
         var x = Input.GetAxisRaw("Horizontal") * 10f * Time.deltaTime;
         var y = Input.GetAxisRaw("Vertical") * 10f * Time.deltaTime;
 
-				//Remove Transform.Translate because it ignores physics
-				GetComponent<Rigidbody2D>().velocity = new Vector2 (x*speed, y*speed);
+	//Update player velocity
+	//Remove Transform.Translate because it ignores physics
+	GetComponent<Rigidbody2D>().velocity = new Vector2 (x*speed, y*speed);
 
     }
 }
