@@ -23,10 +23,11 @@ public class Civilian : MonoBehaviour {
 	void Update () {
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, Mathf.Infinity);
+        RaycastHit2D hitInCollider = Physics2D.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, Mathf.Infinity);
 
-        if (hit.collider != null)
+        if (hit.collider != null || hitInCollider.collider != null)
         {
-            if (hit.collider.gameObject.name == "Player")
+            if (hit.collider.gameObject.name == "Player" || hitInCollider.collider.gameObject.name == "Player")
             {
                 stealthScript.playerDetected = true;
             }
@@ -52,9 +53,9 @@ public class Civilian : MonoBehaviour {
         else
         {
             timeInTrigger += Time.deltaTime;
-            print(timeInTrigger);
+ //           print(timeInTrigger);
 
-            if (timeInTrigger >= 5f)
+            if (timeInTrigger >= 1f)
             {
                 stealthScript.playerDetected = true;
             }
@@ -73,5 +74,10 @@ public class Civilian : MonoBehaviour {
     {
         isTriggered = false;
         timeInTrigger = 0.0f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        stealthScript.playerDetected = true;
     }
 }
