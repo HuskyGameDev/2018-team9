@@ -7,6 +7,7 @@ public class Civilian : MonoBehaviour {
     public GameObject eye;
     Stealth stealthScript;
     private bool isTriggered = false;
+    private float timeInTrigger = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,11 @@ public class Civilian : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+
+    /*
+     *  Stealth needs to work so that player can get close enough to kill them 
+     * 
+     */
 	void Update () {
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, Mathf.Infinity);
@@ -26,28 +32,46 @@ public class Civilian : MonoBehaviour {
             }
             else
             {
-                if (!isTriggered)
-                {
-                    stealthScript.playerDetected = false;
-                }
+                DetectPlayer();
             }
-            
+        }
+        else
+        {
+            DetectPlayer();            
         }
 
 
-	}
+    }
+
+    private void DetectPlayer()
+    {
+        if (!isTriggered)
+        {
+            stealthScript.playerDetected = false;
+        }
+        else
+        {
+            timeInTrigger += Time.deltaTime;
+            print(timeInTrigger);
+
+            if (timeInTrigger >= 5f)
+            {
+                stealthScript.playerDetected = true;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
             isTriggered = true;
-            stealthScript.playerDetected = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isTriggered = false;   
+        isTriggered = false;
+        timeInTrigger = 0.0f;
     }
 }

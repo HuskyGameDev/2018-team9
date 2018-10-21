@@ -391,9 +391,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 4
 --- !u!4 &537056372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af,
