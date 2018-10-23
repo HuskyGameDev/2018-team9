@@ -7,39 +7,43 @@ public class NavMeshAI : MonoBehaviour {
 
 	public NavMeshAgent agent;
 	public Camera cam;
-	public float timer = 5;
+	public float timer = 15;
 	private float timeCount;
 
+	//initialization
 	void Start() {
 		agent.speed = 10f;
 
 	}
-	void Update() {
-     // RaycastHit hit;
-     // if (Input.GetMouseButtonDown(0)) {
-     //    Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-     //    if (Physics.Raycast(ray, out hit))
-     //       agent.SetDestination(hit.point);
-		 //
-     //    }
-		 //transform.parent.position = transform.position;
 
+	//Update method called every frame
+	//Waits specified amount of time before calculating new position
+	void Update() {
+
+		 //Wait specified amount of time before finding new point to move
 		 timeCount += Time.deltaTime;
-		 if(timeCount >= timer)
+		 if(timeCount >= 15)
 		 {
-			 if (timeCount >= timer) {
-				 Vector3 newPosition = RandomMove(transform.position, 25, -1);
+			 	 //Find new point to move to
+				 Vector3 newPosition = RandomMove(transform.position, -1);
+				 //Start moving the Android by setting the new position
 				 agent.SetDestination(newPosition);
 				 timeCount = 0;
-			 }
 		 }
   }
 
-	static Vector3 RandomMove(Vector3 origin, float dist, int layermask) {
-			Vector3 randDirection = Random.insideUnitSphere * dist;
-			randDirection += origin;
+	/*This method randomizes a point on the map to move the Android
+	  and returns the position to move to*/
+	static Vector3 RandomMove(Vector3 origin, int layermask) {
+			Vector3 randPoint = new Vector3(0f,0f,0f);
+
+			//Randomize a point on the map
+			randPoint.x = Random.Range(-57f, 57f);
+			randPoint.z = Random.Range(-30f, 30f);
 			NavMeshHit navHit;
-			NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+			//Find point on navmesh closest to the randomized point
+			NavMesh.SamplePosition(randPoint, out navHit, 60, layermask);
 			return navHit.position;
 		}
 }
