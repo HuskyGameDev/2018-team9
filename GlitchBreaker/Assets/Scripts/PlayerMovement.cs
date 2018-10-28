@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	private int speed = 50;
+	private Civilian civilianScript;
 	private Vector3 scale;
 	private bool facingRight = false;
+	private SpriteRenderer sprite;
 	// Use this for initialization
 	void Start () {
-
+		sprite = GetComponent<SpriteRenderer>();
 	}
 
 	// Update is called once per frame
@@ -25,9 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 			 //Flip sprite if it is not facing right already
 			 if (!facingRight)
 			 {
-				 scale = transform.localScale;
-			   scale.x = -1 * scale.x;
-			   transform.localScale = scale;
+				 sprite.flipX = true;
 				 facingRight = true;
 			 }
 		}
@@ -37,9 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 			 //Flip sprite if it is  not facing left already
 			 if (facingRight)
 			 {
-				 scale = transform.localScale;
-			   scale.x = -1 * scale.x;
-			   transform.localScale = scale;
+				 sprite.flipX = false;
 				 facingRight = false;
 			 }
 		}
@@ -47,6 +45,22 @@ public class PlayerMovement : MonoBehaviour {
 		//Update player velocity
 		//Remove Transform.Translate because it ignores physics
 		GetComponent<Rigidbody>().velocity = new Vector3 (x*speed, 0, y*speed);
-
   }
+
+	//Check collision of player and NPC
+	void OnCollisionStay(Collision collision)
+	{
+		//If attack button is pressed
+		if (Input.GetMouseButtonDown(0))
+		{
+			//If player is colliding with a civilian or the Android
+			if (collision.collider.name == "Civilian" || collision.collider.name == "AI")
+			{
+				//Get the Civilian script and call the kill method
+				civilianScript = collision.gameObject.GetComponent<Civilian>();
+				civilianScript.kill();
+				//Destroy(collision.gameObject);
+			}
+		}
+	}
 }

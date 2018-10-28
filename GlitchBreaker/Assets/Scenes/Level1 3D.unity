@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 254336286}
   - component: {fileID: 254336284}
   - component: {fileID: 254336289}
+  - component: {fileID: 254336285}
   m_Layer: 0
   m_Name: AI Test
   m_TagString: Untagged
@@ -433,6 +434,19 @@ MonoBehaviour:
   agent: {fileID: 254336289}
   cam: {fileID: 1592321766}
   timer: 5
+--- !u!114 &254336285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1253b129bd395a4dbc98c2e89f32722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eye: {fileID: 0}
+  isAndroid: 1
 --- !u!54 &254336286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1278,6 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eye: {fileID: 947941648}
+  isAndroid: 0
 --- !u!212 &1315736883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1504,7 +1519,7 @@ GameObject:
   - component: {fileID: 1670605433}
   - component: {fileID: 1670605434}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

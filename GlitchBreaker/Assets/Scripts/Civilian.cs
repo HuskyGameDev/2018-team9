@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +8,19 @@ public class Civilian : MonoBehaviour {
     Stealth stealthScript;
     private bool isTriggered = false;
     private float timeInTrigger = 0.0f;
+    public bool isAndroid = false;
 
 	// Use this for initialization
 	void Start () {
-        stealthScript = eye.GetComponent<Stealth>();
+        //Don't run the Update() method if the NPC is an Android
+        if (isAndroid)
+        {
+          enabled = false;
+        }
+        else
+        {
+          stealthScript = eye.GetComponent<Stealth>();
+        }
 	}
 
 	// Update is called once per frame
@@ -22,22 +31,31 @@ public class Civilian : MonoBehaviour {
      */
 	void Update () {
 
-        RaycastHit hit, hitInCollider;
+        RaycastHit hit; //Hit detects if the player is in the NPCs point of view
+        RaycastHitaaaa hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
+
+        //Get hit raycast for point of view
         if (Physics.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, out hit, Mathf.Infinity))
         {
+            //Get hitInCollider raycast for proximity
             if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
             {
+               //If either raycast hits something, check if it hit the player
                if (hit.collider != null || hitInCollider.collider != null)
                {
+                  //Check if the raycasts hit the player
                   if (hit.collider.gameObject.name == "Player" || hitInCollider.collider.gameObject.name == "Player")
                   {
+                      //The player was detected
                       stealthScript.playerDetected = true;
                   }
+                  //Otherwise check if the player is in the sphere collider
                   else
                   {
                       DetectPlayer();
                   }
                }
+               //Check if the player is in the sphere collider
                else
                {
                   DetectPlayer();
@@ -46,17 +64,20 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+    //Check if the player is in the sphere collider
     private void DetectPlayer()
     {
+        //If the player is out of the sphere collider and isn't colliding with the NPC
         if (!isTriggered)
         {
+            //Set the eye to green
             stealthScript.playerDetected = false;
         }
+        //If the player is in the sphere collider for 1 second, set the eye to red
         else
         {
+            //Wait 1 second
             timeInTrigger += Time.deltaTime;
- //           print(timeInTrigger);
-
             if (timeInTrigger >= 1f)
             {
                 stealthScript.playerDetected = true;
@@ -64,22 +85,50 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+    //If the player is in the sphere collider, set stealth to triggered
     private void OnTriggerEnter(Collider collision)
     {
+        //If the colliding object is the player
         if (collision.name == "Player")
         {
             isTriggered = true;
         }
     }
 
+    //Set stealth to untriggered once the player leaves the sphere collider
     private void OnTriggerExit(Collider collision)
     {
         isTriggered = false;
         timeInTrigger = 0.0f;
     }
 
+    //If the player collides with the civilian, set the player detected state to true
     private void OnCollisionEnter(Collision collision)
     {
-        stealthScript.playerDetected = true;
+        //Civilian is not an Android
+        if (!isAndroid)
+        {
+          stealthScript.playerDetected = true;
+        }
+    }
+
+    //Kill civilian or Android
+    public void kill()
+    {
+      //Delete colliders and set rotation
+      //Android and civilian have different hierarchy on scene
+      if (isAndroid)
+      {
+        Destroy(GetComponent<NavMeshAI>());
+        Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
+        this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
+      }
+      else
+      {
+        Destroy(GetComponent<BoxCollider>());
+        transform.Rotate(0,0,90);
+      }
+      //Disable calls to Update()
+      enabled = false;
     }
 }
