@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 scale;
 	private bool facingRight = false;
 	private SpriteRenderer sprite;
+
 	// Use this for initialization
 	void Start () {
 		sprite = GetComponent<SpriteRenderer>();
@@ -63,4 +64,5 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 	}
-}
+
+  }

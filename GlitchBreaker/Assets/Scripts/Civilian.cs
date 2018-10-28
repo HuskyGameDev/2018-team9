@@ -85,6 +85,7 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+
     //If the player is in the sphere collider, set stealth to triggered
     private void OnTriggerEnter(Collider collision)
     {
@@ -95,12 +96,14 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+
     //Set stealth to untriggered once the player leaves the sphere collider
     private void OnTriggerExit(Collider collision)
     {
         isTriggered = false;
         timeInTrigger = 0.0f;
     }
+
 
     //If the player collides with the civilian, set the player detected state to true
     private void OnCollisionEnter(Collision collision)
