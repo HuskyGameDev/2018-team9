@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
+  - PersistentMenuSound
+  - Floor
+  - Inner Wall
+  - Outer Wall
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Characters
   - 
   - 
   - 
