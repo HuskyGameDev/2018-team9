@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 254336289}
   cam: {fileID: 1592321766}
-  timer: 5
+  timer: 15
 --- !u!114 &254336285
 MonoBehaviour:
   m_ObjectHideFlags: 0

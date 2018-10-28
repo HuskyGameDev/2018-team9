@@ -32,7 +32,7 @@ public class Civilian : MonoBehaviour {
 	void Update () {
 
         RaycastHit hit; //Hit detects if the player is in the NPCs point of view
-        RaycastHitaaaa hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
+        RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
 
         //Get hit raycast for point of view
         if (Physics.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, out hit, Mathf.Infinity))
