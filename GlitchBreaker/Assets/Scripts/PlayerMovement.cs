@@ -9,10 +9,12 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 scale;
 	private bool facingRight = false;
 	private SpriteRenderer sprite;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		sprite = GetComponent<SpriteRenderer>();
+		anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -42,6 +44,11 @@ public class PlayerMovement : MonoBehaviour {
 				 facingRight = false;
 			 }
 		}
+
+		if (x != 0 || y != 0)
+			anim.SetBool("Walking", true);
+		else
+			anim.SetBool("Walking", false);
 
 		//Update player velocity
 		//Remove Transform.Translate because it ignores physics
