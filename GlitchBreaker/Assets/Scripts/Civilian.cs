@@ -10,8 +10,14 @@ public class Civilian : MonoBehaviour {
     private float timeInTrigger = 0.0f;
     public bool isAndroid = false;
 
+    private bool nextToWall = false;
+    private bool nextToPlayer = true;
+    private float distanceFromWall;
+    public GameObject civilian;
+
 	// Use this for initialization
 	void Start () {
+
         //Don't run the Update() method if the NPC is an Android
         if (isAndroid)
         {
@@ -33,7 +39,6 @@ public class Civilian : MonoBehaviour {
 
         RaycastHit hit; //Hit detects if the player is in the NPCs point of view
         RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
-
 
         //Get hit raycast for point of view
         if (Physics.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, out hit, Mathf.Infinity))
@@ -90,10 +95,37 @@ public class Civilian : MonoBehaviour {
     //If the player is in the sphere collider, set stealth to triggered
     private void OnTriggerEnter(Collider collision)
     {
+
+        if (collision.tag == "Inner Wall")
+        {
+            nextToWall = true;
+            distanceFromWall = Vector3.Distance(collision.transform.position, civilian.transform.position);
+            print("Distance From Wall: " + distanceFromWall);
+        }
         //If the colliding object is the player
         if (collision.name == "Player")
         {
-            isTriggered = true;
+            if (!nextToWall)
+            {
+                isTriggered = true;
+            }
+            else
+            {
+                nextToPlayer = true;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (nextToPlayer && other.name == "Player")
+        {
+            float distanceFromPlayer = Vector3.Distance(other.transform.position, civilian.transform.position);
+            print("Distance From Player: " + distanceFromPlayer);
+            if (distanceFromPlayer < distanceFromWall)
+            {
+                isTriggered = true;
+            }
         }
     }
 

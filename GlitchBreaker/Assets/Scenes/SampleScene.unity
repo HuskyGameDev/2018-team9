@@ -614,7 +614,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -629,18 +628,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937e14f2ff78f304fb32f758cd9a85ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  civ: {fileID: 1143699825}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -699,48 +686,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af,
     type: 2}
   m_PrefabInternal: {fileID: 1648972303}
---- !u!1001 &548219744
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444007825646684, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed95323701c3d9544a7335f6f35e9352, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!4 &749669762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4642069264873116, guid: a6d2101128c87f74d9d0c11fa5d4e3af,
@@ -1655,6 +1600,25 @@ Rigidbody2D:
 --- !u!61 &1450581917
 BoxCollider2D:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1450581912}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 0.83}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.83}
   m_EdgeRadius: 0
