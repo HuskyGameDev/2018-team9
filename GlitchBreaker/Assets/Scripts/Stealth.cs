@@ -11,9 +11,10 @@ public class Stealth : MonoBehaviour {
 	void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
+        //Update the eye color if the player is detected
         if (playerDetected)
         {
             spriteRenderer.color = Color.red;

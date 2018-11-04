@@ -26,4 +26,18 @@ public class SceneTransition : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public GameManager GM;
+	
+	// Update is called once per frame
+	void Update ()
+	{
+	    if (Input.GetButtonDown("Cancel"))     
+		{
+			GM.TogglePauseMenu();
+		}
+    }
+
+
+
 }
