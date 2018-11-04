@@ -25,10 +25,12 @@ public class Civilian : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, Mathf.Infinity);
         RaycastHit2D hitInCollider = Physics2D.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, Mathf.Infinity);
 
+//        print(hit.collider.gameObject);
+
         if (hit.collider != null || hitInCollider.collider != null)
         {
             if (hit.collider.gameObject.name == "Player" || hitInCollider.collider.gameObject.name == "Player")
-            {
+          {
                 stealthScript.playerDetected = true;
             }
             else
