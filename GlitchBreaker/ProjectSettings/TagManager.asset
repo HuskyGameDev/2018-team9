@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Inner Wall
   - Outer Wall
+  - Eye
+  - Civilians
   layers:
   - Default
   - TransparentFX

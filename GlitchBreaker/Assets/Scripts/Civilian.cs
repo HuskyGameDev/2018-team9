@@ -14,9 +14,16 @@ public class Civilian : MonoBehaviour {
     private bool nextToPlayer = true;
     private float distanceFromWall;
     public GameObject civilian;
+    Transform civTransform;
+    int index;
 
 	// Use this for initialization
 	void Start () {
+
+        eye = GameObject.FindGameObjectWithTag("Eye");
+        civilian = this.gameObject;
+        civTransform = civilian.transform;
+        index = civTransform.GetSiblingIndex();
 
         //Don't run the Update() method if the NPC is an Android
         if (isAndroid)
@@ -46,38 +53,13 @@ public class Civilian : MonoBehaviour {
             //Get hitInCollider raycast for proximity
             if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
             {
-               //If either raycast hits something, check if it hit the player
-               if (hit.collider != null || hitInCollider.collider != null)
-               {
-                  //Check if the raycasts hit the player
-                  if (hit.collider.gameObject.name == "Player" || hitInCollider.collider.gameObject.name == "Player")
-                  {
-                      //The player was detected
-                      stealthScript.playerDetected = true;
-                  }
-                  //Otherwise check if the player is in the sphere collider
-                  else
-                  {
-                      DetectPlayer();
-                  }
-               }
-               //Check if the player is in the sphere collider
-               else
-               {
-                  DetectPlayer();
-               }
-            }
-        }
-    }
-
-    private void CheckRayCast(RaycastHit hit, float distance)
-    {
-        if (Physics.Raycast(transform.position + new Vector3(distance, 0, 0), Vector3.right, out hit, Mathf.Infinity))
-        {
-            if (hit.collider != null) {
-                if (hit.collider.gameObject.name == "Player")
+                if (CheckRayCast(hit, 5f))
                 {
-                    stealthScript.playerDetected = true;
+                    stealthScript.DetectPlayer(index, true);
+                }
+                else if (CheckRayCast(hitInCollider, 1.5f))
+                {
+                    stealthScript.DetectPlayer(index, true);
                 }
                 else
                 {
@@ -87,6 +69,17 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+    private bool CheckRayCast(RaycastHit hit, float distance)
+    {
+        if (hit.collider != null) {
+            if (hit.collider.gameObject.name == "Player")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Check if the player is in the sphere collider
     private void DetectPlayer()
     {
@@ -94,7 +87,7 @@ public class Civilian : MonoBehaviour {
         if (!isTriggered)
         {
             //Set the eye to green
-            stealthScript.playerDetected = false;
+            stealthScript.DetectPlayer(index, false);
         }
         //If the player is in the sphere collider for 1 second, set the eye to red
         else
@@ -103,7 +96,7 @@ public class Civilian : MonoBehaviour {
             timeInTrigger += Time.deltaTime;
             if (timeInTrigger >= 1f)
             {
-                stealthScript.playerDetected = true;
+                stealthScript.DetectPlayer(index, true);
             }
         }
     }
@@ -116,8 +109,8 @@ public class Civilian : MonoBehaviour {
         if (collision.tag == "Inner Wall")
         {
             nextToWall = true;
-            distanceFromWall = Vector3.Distance(collision.transform.position, civilian.transform.position);
-            print("Distance From Wall: " + distanceFromWall);
+            distanceFromWall = Vector3.Distance(collision.transform.position, civTransform.position);
+//            print("Distance From Wall: " + distanceFromWall);
         }
         //If the colliding object is the player
         if (collision.name == "Player")
@@ -137,8 +130,9 @@ public class Civilian : MonoBehaviour {
     {
         if (nextToPlayer && other.name == "Player")
         {
-            float distanceFromPlayer = Vector3.Distance(other.transform.position, civilian.transform.position);
-            print("Distance From Player: " + distanceFromPlayer);
+//            print(Vector3.Distance(other.transform.position, civTransform.position));
+            float distanceFromPlayer = Vector3.Distance(other.transform.position, civTransform.position);
+//            print("Distance From Player: " + distanceFromPlayer);
             if (distanceFromPlayer < distanceFromWall)
             {
                 isTriggered = true;
@@ -154,16 +148,19 @@ public class Civilian : MonoBehaviour {
         timeInTrigger = 0.0f;
     }
 
-
+   
     //If the player collides with the civilian, set the player detected state to true
     private void OnCollisionEnter(Collision collision)
     {
         //Civilian is not an Android
+        
         if (!isAndroid)
         {
-          stealthScript.playerDetected = true;
+          stealthScript.DetectPlayer(index, true);
         }
+        
     }
+    
 
     //Kill civilian or Android
     public void kill()
