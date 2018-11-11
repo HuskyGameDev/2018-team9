@@ -613,7 +613,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 254336282}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 726797537}
-  civilianPrefab: {fileID: 1796120316181158, guid: 1af16e3de3739624b92a54fdf0867ca3,
+  civilianPrefab: {fileID: 1237481459135532, guid: 3def82283722d954b88ec122a048a39d,
     type: 2}
   eye: {fileID: 947941648}
   sprites:
@@ -2101,7 +2101,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586914312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.70703, y: 10.921875, z: -4.9296875}
+  m_LocalPosition: {x: -39.70703, y: 0, z: -4.9296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

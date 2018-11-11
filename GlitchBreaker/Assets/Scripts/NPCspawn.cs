@@ -48,13 +48,13 @@ public class NPCspawn : MonoBehaviour {
 		civilianInstance = Instantiate(civilianPrefab, position, rotation);
 		civilianInstance.transform.SetParent(GameObject.Find("Civilians").transform);
 		civilianInstance.GetComponent<Civilian>().eye = eye;
-		civilianInstance.GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];
+		civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];
 
 		//Make sure it doesn't overlap previously spawned civilians
 		for (int j = 0; j < i; j++)
 		{
 			//Check if collider overlaps another civilian collider
-			if (civilianInstance.GetComponent<Collider>().bounds.Intersects(spawnPositions[j].bounds))
+			if (civilianInstance.transform.GetChild(0).GetComponent<Collider>().bounds.Intersects(spawnPositions[j].bounds))
 			{
 				//Randomize new location
 				position.x = Random.Range(-(transform.localScale.x/2f-6f), (transform.localScale.x/2f-6f));
@@ -65,6 +65,6 @@ public class NPCspawn : MonoBehaviour {
 		}
 
 		//Add this collider to array
-		spawnPositions[i] = civilianInstance.GetComponent<Collider>();
+		spawnPositions[i] = civilianInstance.transform.GetChild(0).GetComponent<Collider>();
 	}
 }

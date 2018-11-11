@@ -168,20 +168,18 @@ public class Civilian : MonoBehaviour {
     //Kill civilian or Android
     public void kill()
     {
-      //Delete colliders and set rotation
-      //Android and civilian have different hierarchy on scene
-      if (isAndroid)
-      {
+        //Delete colliders and set rotation
         Destroy(GetComponent<NavMeshAI>());
+        this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Destroy(this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>());
+
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
-      }
-      else
-      {
-        Destroy(GetComponent<BoxCollider>());
-        transform.Rotate(0,0,90);
-      }
-      //Disable calls to Update()
-      enabled = false;
+
+
+        //Disable calls to Update()
+        enabled = false;
+
+        Destroy(this.gameObject, 10.0f);
     }
 }
