@@ -70,6 +70,23 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+    private void CheckRayCast(RaycastHit hit, float distance)
+    {
+        if (Physics.Raycast(transform.position + new Vector3(distance, 0, 0), Vector3.right, out hit, Mathf.Infinity))
+        {
+            if (hit.collider != null) {
+                if (hit.collider.gameObject.name == "Player")
+                {
+                    stealthScript.playerDetected = true;
+                }
+                else
+                {
+                    DetectPlayer();
+                }
+            }
+        }
+    }
+
     //Check if the player is in the sphere collider
     private void DetectPlayer()
     {
