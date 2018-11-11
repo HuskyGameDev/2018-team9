@@ -96,7 +96,7 @@ public class Civilian : MonoBehaviour {
             timeInTrigger += Time.deltaTime;
             if (timeInTrigger >= 1f)
             {
-                stealthScript.DetectPlayer(index, false);
+                stealthScript.DetectPlayer(index, true);
             }
         }
     }
@@ -156,7 +156,7 @@ public class Civilian : MonoBehaviour {
         
         if (!isAndroid)
         {
-          stealthScript.DetectPlayer(index, false);
+          stealthScript.DetectPlayer(index, true);
         }
         
     }
