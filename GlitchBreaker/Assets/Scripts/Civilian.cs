@@ -16,6 +16,7 @@ public class Civilian : MonoBehaviour {
     public GameObject civilian;
     Transform civTransform;
     int index;
+    int killCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -30,10 +31,9 @@ public class Civilian : MonoBehaviour {
         {
           enabled = false;
         }
-        else
-        {
-          stealthScript = eye.GetComponent<Stealth>();
-        }
+
+        stealthScript = eye.GetComponent<Stealth>();
+
 	}
 
 	// Update is called once per frame
@@ -172,11 +172,18 @@ public class Civilian : MonoBehaviour {
         Destroy(GetComponent<NavMeshAI>());
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
+        killCount++;
+        if (stealthScript.playerDetected)
+            print("Oops! You were seen :(");
+        else
+            print("Success! :)");
       }
       else
       {
         Destroy(GetComponent<BoxCollider>());
         transform.Rotate(0,0,90);
+        killCount++;
+        print("Failed: Wrong target :(");
       }
       //Disable calls to Update()
       enabled = false;
