@@ -67,8 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1253b129bd395a4dbc98c2e89f32722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eye: {fileID: 0}
+  eye: {fileID: 1945111621238396, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
   isAndroid: 0
+  civilian: {fileID: 1796120316181158}
 --- !u!114 &114909375614130872
 MonoBehaviour:
   m_ObjectHideFlags: 1

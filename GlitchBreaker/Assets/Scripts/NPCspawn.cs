@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCspawn : MonoBehaviour {
 
 	public GameObject background;
-	private Transform transform;
+	private Transform mapBoundary;
 	public GameObject civilianPrefab;
 	private GameObject civilianInstance;
 	public GameObject eye;
@@ -16,7 +16,7 @@ public class NPCspawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform = background.GetComponent<Transform>();   //Map boundary
+		mapBoundary = background.GetComponent<Transform>();   //Map boundary
 		spawnPositions = new Collider[numCivilians];				//Array of Colliders of previously spawned civilians
 
 		//Spawn civilians
@@ -38,8 +38,8 @@ public class NPCspawn : MonoBehaviour {
 
 		//Random location within map boundary
 		position = new Vector3(0, 0.5f, 0);
-		position.x = Random.Range(-(transform.localScale.x/2f-6f), (transform.localScale.x/2f-6f));
-		position.z = Random.Range(-(transform.localScale.z/2f-6f), (transform.localScale.z/2f-6f));
+		position.x = Random.Range(-(mapBoundary.localScale.x/2f-6f), (mapBoundary.localScale.x/2f-6f));
+		position.z = Random.Range(-(mapBoundary.localScale.z/2f-6f), (mapBoundary.localScale.z/2f-6f));
 
 		//Set rotation
 		rotation = Quaternion.Euler(90,0,0);
@@ -57,8 +57,8 @@ public class NPCspawn : MonoBehaviour {
 			if (civilianInstance.GetComponent<Collider>().bounds.Intersects(spawnPositions[j].bounds))
 			{
 				//Randomize new location
-				position.x = Random.Range(-(transform.localScale.x/2f-6f), (transform.localScale.x/2f-6f));
-				position.z = Random.Range(-(transform.localScale.z/2f-6f), (transform.localScale.z/2f-6f));
+				position.x = Random.Range(-(mapBoundary.localScale.x/2f-6f), (mapBoundary.localScale.x/2f-6f));
+				position.z = Random.Range(-(mapBoundary.localScale.z/2f-6f), (mapBoundary.localScale.z/2f-6f));
 				civilianInstance.transform.position = position;
 				j = 0; //Start loop over
 			}

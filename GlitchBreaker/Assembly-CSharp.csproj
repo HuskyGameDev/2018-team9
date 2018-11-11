@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MenuSounds.cs" />
     <Compile Include="Assets\Scripts\NavMeshAI.cs" />
+    <Compile Include="Assets\Scripts\NPCspawn.cs" />
     <Compile Include="Assets\Scripts\PersistentGameObject.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SceneTransition.cs" />
