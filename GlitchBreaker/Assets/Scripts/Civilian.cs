@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Civilian : MonoBehaviour {
 
@@ -173,10 +174,14 @@ public class Civilian : MonoBehaviour {
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
         killCount++;
-        if (stealthScript.playerDetected)
-            print("Oops! You were seen :(");
-        else
-            print("Success! :)");
+		if (stealthScript.playerDetected) {
+			print ("Oops! You were seen :(");
+			SceneManager.LoadScene ("QuitGame");
+		} else {
+			print ("Success! :)");
+			SceneManager.LoadScene ("QuitGame");
+		}
+			
       }
       else
       {
@@ -184,6 +189,7 @@ public class Civilian : MonoBehaviour {
         transform.Rotate(0,0,90);
         killCount++;
         print("Failed: Wrong target :(");
+		SceneManager.LoadScene ("QuitGame");
       }
       //Disable calls to Update()
       enabled = false;
