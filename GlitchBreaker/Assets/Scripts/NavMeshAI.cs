@@ -13,6 +13,7 @@ public class NavMeshAI : MonoBehaviour {
     private Vector3 newPosition;
     private Vector3 previousPosition; //Position in the previous frame
     private bool facingRight = false;
+    private float facingTimer = 0;
 
     //initialization
     void Start() {
@@ -46,21 +47,24 @@ public class NavMeshAI : MonoBehaviour {
 
          //Flip sprite based on walking direction
          //Walking right
+         facingTimer += Time.deltaTime;
 		 if (this.transform.position.x > previousPosition.x)
          {
-            if (!facingRight)
+            if (!facingRight && facingTimer >=1)
             {
                 this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 facingRight = true;
+                facingTimer = 0;
             }
          }
          //Walking left
          else if (this.transform.position.x < previousPosition.x)
          {
-            if (facingRight)
+            if (facingRight && facingTimer >= 1)
             {
                 this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 facingRight = false;
+                facingTimer = 0;
             }
          }
 
