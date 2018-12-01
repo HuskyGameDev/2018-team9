@@ -9,28 +9,64 @@ public class NavMeshAI : MonoBehaviour {
 	public Camera cam;
 	public float timer;
 	private float timeCount;
+	private Animator anim;
+    private Vector3 newPosition;
+    private Vector3 previousPosition; //Position in the previous frame
+    private bool facingRight = false;
 
-	//initialization
-	void Start() {
+    //initialization
+    void Start() {
 		agent.speed = 10f;
-
+		anim = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        previousPosition = new Vector3(0,0,0);
 	}
 
 	//Update method called every frame
 	//Waits specified amount of time before calculating new position
 	void Update() {
-
+         
 		 //Wait specified amount of time before finding new point to move
 		 timeCount += Time.deltaTime;
-		 if(timeCount >= timer)
+         /*if (this.GetComponent<Rigidbody>().velocity.magnitude <= 500 && timeCount > 1)
+         {
+            //Debug.Log("HERE");
+            anim.SetBool("Walking", false);
+         }
+         else { anim.SetBool("Walking", true); }*/
+
+         if (timeCount >= timer)
 		 {
 			 	 //Find new point to move to
-				 Vector3 newPosition = RandomMove(transform.position, -1);
+				 newPosition = RandomMove(transform.position, -1);
 				 //Start moving the Android by setting the new position
 				 agent.SetDestination(newPosition);
+				 //anim.SetBool("Walking", true);
 				 timeCount = 0;
 		 }
-  }
+
+         //Flip sprite based on walking direction
+         //Walking right
+		 if (this.transform.position.x > previousPosition.x)
+         {
+            if (!facingRight)
+            {
+                this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                facingRight = true;
+            }
+         }
+         //Walking left
+         else if (this.transform.position.x < previousPosition.x)
+         {
+            if (facingRight)
+            {
+                this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                facingRight = false;
+            }
+         }
+
+
+        previousPosition = this.transform.position;
+    }
 
 	/*This method randomizes a point on the map to move the Android
 	  and returns the position to move to*/
