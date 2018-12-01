@@ -453,7 +453,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.83000016, z: 0.25}
-  m_Center: {x: 0, y: 0, z: -0.125}
+  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!95 &195677688
 Animator:
   serializedVersion: 3
@@ -1402,7 +1402,7 @@ BoxCollider:
   m_GameObject: {fileID: 726797537}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2010,7 +2010,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e55c439596b44d148b7ddf5d53f735c7, type: 3}
   - {fileID: 21300000, guid: 345b2f8936d842447947f6861c116670, type: 3}
   - {fileID: 21300000, guid: 98e924f121ccc2547813b366f6f8fcf6, type: 3}
-  numCivilians: 2
+  numCivilians: 5
 --- !u!4 &1586914314
 Transform:
   m_ObjectHideFlags: 0
