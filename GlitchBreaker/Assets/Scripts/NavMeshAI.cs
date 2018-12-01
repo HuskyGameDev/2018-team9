@@ -13,6 +13,7 @@ public class NavMeshAI : MonoBehaviour {
 	//initialization
 	void Start() {
 		agent.speed = 10f;
+		cam = Camera.main;
 
 	}
 

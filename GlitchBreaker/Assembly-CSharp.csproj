@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\AIMovement.cs" />
      <Compile Include="Assets\menusounds.cs" />
+     <Compile Include="Assets\Scripts\AI.cs" />
      <Compile Include="Assets\Scripts\Civilian.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MenuSounds.cs" />
