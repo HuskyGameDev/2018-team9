@@ -46,6 +46,7 @@ public class NPCspawn : MonoBehaviour {
 
 		//Instantiate game object and set components that can't be assigned in prefab
 		civilianInstance = Instantiate(civilianPrefab, position, rotation);
+        civilianInstance.GetComponent<Civilian>().spriteIndex = i;
 		civilianInstance.transform.SetParent(GameObject.Find("Civilians").transform);
 		civilianInstance.GetComponent<Civilian>().eye = eye;
 		civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];

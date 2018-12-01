@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 135726887063758798}
   - component: {fileID: 114909375614130872}
   - component: {fileID: 114437751186688402}
+  - component: {fileID: 95693120119529532}
   m_Layer: 0
   m_Name: civilian
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1796120316181158}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -57.5, y: 0.5, z: -8.3}
+  m_LocalPosition: {x: -34.66, y: 0.5, z: -19.25}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,6 +57,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.83000016, z: 0.20000005}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95693120119529532
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796120316181158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ef1672590a3dc049a5e3e72e59b238c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114437751186688402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +89,8 @@ MonoBehaviour:
   eye: {fileID: 1945111621238396, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
   isAndroid: 0
   civilian: {fileID: 1796120316181158}
+  sprites: []
+  androidSprite: {fileID: 0}
 --- !u!114 &114909375614130872
 MonoBehaviour:
   m_ObjectHideFlags: 1
