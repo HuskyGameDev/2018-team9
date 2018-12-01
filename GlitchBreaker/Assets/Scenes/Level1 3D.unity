@@ -2015,12 +2015,12 @@ MonoBehaviour:
   eye: {fileID: 947941648}
   sprites:
   - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
-  - {fileID: 21300000, guid: ac798436d2ff6844f90c41e4d415bd9d, type: 3}
-  - {fileID: 21300000, guid: 2fcb35ef86be4014492ddc2103c3a7a0, type: 3}
-  - {fileID: 21300000, guid: e55c439596b44d148b7ddf5d53f735c7, type: 3}
-  - {fileID: 21300000, guid: 345b2f8936d842447947f6861c116670, type: 3}
-  - {fileID: 21300000, guid: 98e924f121ccc2547813b366f6f8fcf6, type: 3}
-  numCivilians: 5
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  numCivilians: 1
 --- !u!4 &1586914314
 Transform:
   m_ObjectHideFlags: 0
@@ -2767,6 +2767,45 @@ Prefab:
         type: 2}
       propertyPath: civilians
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 6d12521a5450a3e4ab53dd3f673cfc6b,
+        type: 3}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017551880899114, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017551880899114, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 6.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 3.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
