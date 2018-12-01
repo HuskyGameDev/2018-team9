@@ -10,7 +10,6 @@ public class Stealth : MonoBehaviour
     NPCspawn npc;
     private int numCivilians = 0;
     private bool[] detection;
-    public bool playerDetected = false;
 
     // Use this for initialization
     void Start()
@@ -30,18 +29,15 @@ public class Stealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        bool tempDetection = false;
+        bool playerDetected = false;
 
         for (int i = 0; i < numCivilians; i++)
         {
             if (detection[i])
             {
-                tempDetection  = true;
+                playerDetected = true;
             }
         }
-
-        playerDetected = tempDetection;
 
         //Update the eye color if the player is detected
         if (playerDetected)

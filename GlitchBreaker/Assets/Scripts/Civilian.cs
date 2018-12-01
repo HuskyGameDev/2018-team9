@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Civilian : MonoBehaviour {
 
@@ -16,8 +15,18 @@ public class Civilian : MonoBehaviour {
     private float distanceFromWall;
     public GameObject civilian;
     Transform civTransform;
-    int index;
-    int killCount = 0;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;
+    public Sprite androidSprite;
+    private int index;
+    private bool androidSpriteActive = false;
+    private float glitchTime = 1f; //seconds before reverting sprite back
+    private float timeCount;
+    private Sprite androidDisguiseSprite;
+    private int glitchProbability = 1;
+    private float gameTimeCount;
+    private float glitchIncreaseTimer = 45f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -28,45 +37,84 @@ public class Civilian : MonoBehaviour {
         index = civTransform.GetSiblingIndex();
 
         //Don't run the Update() method if the NPC is an Android
-        if (isAndroid)
+        if (!isAndroid)
         {
-          enabled = false;
+          stealthScript = eye.GetComponent<Stealth>();
         }
-
-        stealthScript = eye.GetComponent<Stealth>();
-
 	}
 
 	// Update is called once per frame
+  /*
+   *  Stealth needs to work so that player can get close enough to kill them
+   *
+   */
+	void Update ()
+  {
+      //Run this portion only for the android
+      if (isAndroid)
+      {
+          gameTimeCount += Time.deltaTime;
+          //Randomly set the android's sprite to be its metallic form
+          if(Random.Range(0,1000) < glitchProbability && androidSpriteActive == false)
+          {
+            //Get spriteRenderer from child
+            spriteRenderer = this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+            //Hold on to the current sprite so it can be reset
+            androidDisguiseSprite = spriteRenderer.sprite;
+            //Update sprite to the android's true form
+            spriteRenderer.sprite = androidSprite;
+            androidSpriteActive = true;
+          }
+          //Wait for specified time and change sprite back to disguised form
+          else if(androidSpriteActive)
+          {
+            timeCount += Time.deltaTime;
+       		  if(timeCount >= glitchTime)
+       		  {
+              //Reset sprite
+              spriteRenderer.sprite = androidDisguiseSprite;
+              androidSpriteActive = false;
+              //Short sprite changes between long sprite changes
+              if (timeCount >= glitchTime+0.1)
+              {
+                timeCount = 0;
+              }
+            }
 
-    /*
-     *  Stealth needs to work so that player can get close enough to kill them
-     *
-     */
-	void Update () {
-
+            //Increase probability of glitch occuring after set period of time
+            if (gameTimeCount >= glitchIncreaseTimer)
+            {
+              glitchProbability += 1;
+              gameTimeCount = 0;
+            }
+          }
+      }
+      //Run this portion only for civilians
+      else
+      {
         RaycastHit hit; //Hit detects if the player is in the NPCs point of view
         RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
 
         //Get hit raycast for point of view
         if (Physics.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, out hit, Mathf.Infinity))
         {
-            //Get hitInCollider raycast for proximity
-            if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
+          //Get hitInCollider raycast for proximity
+          if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
+          {
+            if (CheckRayCast(hit, 5f))
             {
-                if (CheckRayCast(hit, 5f))
-                {
-                    stealthScript.DetectPlayer(index, true);
-                }
-                else if (CheckRayCast(hitInCollider, 1.5f))
-                {
-                    stealthScript.DetectPlayer(index, true);
-                }
-                else
-                {
-                    DetectPlayer();
-                }
+                stealthScript.DetectPlayer(index, true);
+              }
+              else if (CheckRayCast(hitInCollider, 1.5f))
+              {
+                stealthScript.DetectPlayer(index, true);
+              }
+              else
+              {
+                  DetectPlayer();
+              }
             }
+          }
         }
     }
 
@@ -174,24 +222,6 @@ public class Civilian : MonoBehaviour {
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
 
-        killCount++;
-		if (stealthScript.playerDetected) {
-			print ("Oops! You were seen :(");
-			SceneManager.LoadScene ("QuitGame");
-		} else {
-			print ("Success! :)");
-			SceneManager.LoadScene ("QuitGame");
-		}
-			
-      }
-      else
-      {
-        Destroy(GetComponent<BoxCollider>());
-        transform.Rotate(0,0,90);
-        killCount++;
-        print("Failed: Wrong target :(");
-		SceneManager.LoadScene ("QuitGame");
-      }
 
         //Disable calls to Update()
         enabled = false;

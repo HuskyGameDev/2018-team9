@@ -7,18 +7,15 @@ public class NPCspawn : MonoBehaviour {
 	public GameObject background;
 	private Transform mapBoundary;
 	public GameObject civilianPrefab;
-	public GameObject androidPrefab;
 	private GameObject civilianInstance;
 	public GameObject eye;
 	public Sprite[] sprites;
 	private Collider[] spawnPositions;
-	public int numCivilians;
-	private int android;
 
+	public int numCivilians;
 
 	// Use this for initialization
 	void Start () {
-		android = Random.Range(0, numCivilians - 1);
 		mapBoundary = background.GetComponent<Transform>();   //Map boundary
 		spawnPositions = new Collider[numCivilians];				//Array of Colliders of previously spawned civilians
 
@@ -47,22 +44,11 @@ public class NPCspawn : MonoBehaviour {
 		//Set rotation
 		rotation = Quaternion.Euler(90,0,0);
 
-		if (i != android) {
-			//Instantiate game object and set components that can't be assigned in prefab
-			civilianInstance = Instantiate (civilianPrefab, position, rotation);
-			civilianInstance.transform.SetParent (GameObject.Find ("Civilians").transform);
-			civilianInstance.GetComponent<Civilian> ().eye = eye;
-			civilianInstance.GetComponent<Civilian> ().isAndroid = false;
-			civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];
-		}
-		else {
-			civilianInstance = Instantiate (androidPrefab, position, rotation);
-			civilianInstance.GetComponent<Civilian> ().eye = eye;
-			Transform androidSprite = civilianInstance.transform.GetChild (0);
-			androidSprite.gameObject.GetComponent<SpriteRenderer> ().sprite = sprites [i % sprites.Length];
-//			civilianInstance.GetComponent<SpriteRenderer> ().sprite = sprites [i % sprites.Length];
-			civilianInstance.GetComponent<Civilian> ().isAndroid = true;
-		}
+		//Instantiate game object and set components that can't be assigned in prefab
+		civilianInstance = Instantiate(civilianPrefab, position, rotation);
+		civilianInstance.transform.SetParent(GameObject.Find("Civilians").transform);
+		civilianInstance.GetComponent<Civilian>().eye = eye;
+		civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];
 
 		//Make sure it doesn't overlap previously spawned civilians
 		for (int j = 0; j < i; j++)
