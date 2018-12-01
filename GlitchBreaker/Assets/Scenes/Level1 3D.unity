@@ -453,7 +453,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.83000016, z: 0.25}
-  m_Center: {x: 0, y: 0, z: -0.125}
+  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!95 &195677688
 Animator:
   serializedVersion: 3
@@ -531,9 +531,82 @@ MonoBehaviour:
   m_NavMeshData: {fileID: 23800000, guid: 99ad7ce7864b72c4e8653ac35804fa6c, type: 2}
 --- !u!4 &254336283 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4518667074222164, guid: 2881aba1bb61e4945a3257c114c14a79,
-    type: 2}
-  m_PrefabInternal: {fileID: 664032207}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 27.7, y: 0.5, z: -2.969998}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children:
+  - {fileID: 1670605432}
+  m_Father: {fileID: 651368786}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &254336284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8a132045e7c5546bd8644ff0670340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 254336289}
+  cam: {fileID: 1592321766}
+  timer: 15
+--- !u!114 &254336285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1253b129bd395a4dbc98c2e89f32722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eye: {fileID: 947941648}
+  isAndroid: 1
+  civilian: {fileID: 0}
+--- !u!54 &254336286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!195 &254336289
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254336282}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.83
+  m_BaseOffset: 0.415
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &336121988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1439,7 @@ BoxCollider:
   m_GameObject: {fileID: 726797537}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1964,7 +2037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 726797537}
-  civilianPrefab: {fileID: 1796120316181158, guid: 1af16e3de3739624b92a54fdf0867ca3,
+  civilianPrefab: {fileID: 1237481459135532, guid: 3def82283722d954b88ec122a048a39d,
     type: 2}
   androidPrefab: {fileID: 1655527127815776, guid: 2881aba1bb61e4945a3257c114c14a79,
     type: 2}
@@ -1976,7 +2049,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e55c439596b44d148b7ddf5d53f735c7, type: 3}
   - {fileID: 21300000, guid: 345b2f8936d842447947f6861c116670, type: 3}
   - {fileID: 21300000, guid: 98e924f121ccc2547813b366f6f8fcf6, type: 3}
-  numCivilians: 2
+  numCivilians: 5
 --- !u!4 &1586914314
 Transform:
   m_ObjectHideFlags: 0
@@ -1984,7 +2057,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586914312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.70703, y: 10.921875, z: -4.9296875}
+  m_LocalPosition: {x: -39.70703, y: 0, z: -4.9296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

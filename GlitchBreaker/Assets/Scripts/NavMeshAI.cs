@@ -7,7 +7,7 @@ public class NavMeshAI : MonoBehaviour {
 
 	public NavMeshAgent agent;
 	public Camera cam;
-	public float timer = 15;
+	public float timer;
 	private float timeCount;
 
 	//initialization
@@ -23,7 +23,7 @@ public class NavMeshAI : MonoBehaviour {
 
 		 //Wait specified amount of time before finding new point to move
 		 timeCount += Time.deltaTime;
-		 if(timeCount >= 15)
+		 if(timeCount >= timer)
 		 {
 			 	 //Find new point to move to
 				 Vector3 newPosition = RandomMove(transform.position, -1);
@@ -44,7 +44,7 @@ public class NavMeshAI : MonoBehaviour {
 			NavMeshHit navHit;
 
 			//Find point on navmesh closest to the randomized point
-			NavMesh.SamplePosition(randPoint, out navHit, 60, layermask);
+			NavMesh.SamplePosition(randPoint, out navHit, 30, layermask);
 			return navHit.position;
 		}
 }

@@ -53,7 +53,7 @@ public class NPCspawn : MonoBehaviour {
 			civilianInstance.transform.SetParent (GameObject.Find ("Civilians").transform);
 			civilianInstance.GetComponent<Civilian> ().eye = eye;
 			civilianInstance.GetComponent<Civilian> ().isAndroid = false;
-			civilianInstance.GetComponent<SpriteRenderer> ().sprite = sprites [i % sprites.Length];
+			civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];
 		}
 		else {
 			civilianInstance = Instantiate (androidPrefab, position, rotation);
@@ -68,7 +68,7 @@ public class NPCspawn : MonoBehaviour {
 		for (int j = 0; j < i; j++)
 		{
 			//Check if collider overlaps another civilian collider
-			if (civilianInstance.GetComponent<Collider>().bounds.Intersects(spawnPositions[j].bounds))
+			if (civilianInstance.transform.GetChild(0).GetComponent<Collider>().bounds.Intersects(spawnPositions[j].bounds))
 			{
 				//Randomize new location
 				position.x = Random.Range(-(mapBoundary.localScale.x/2f-6f), (mapBoundary.localScale.x/2f-6f));
@@ -79,6 +79,6 @@ public class NPCspawn : MonoBehaviour {
 		}
 
 		//Add this collider to array
-		spawnPositions[i] = civilianInstance.GetComponent<Collider>();
+		spawnPositions[i] = civilianInstance.transform.GetChild(0).GetComponent<Collider>();
 	}
 }

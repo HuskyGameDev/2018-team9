@@ -107,11 +107,11 @@ public class Civilian : MonoBehaviour {
     private void OnTriggerEnter(Collider collision)
     {
 
+        //Don't let the player be seen if he is hidden behind a wall
         if (collision.tag == "Inner Wall")
         {
             nextToWall = true;
             distanceFromWall = Vector3.Distance(collision.transform.position, civTransform.position);
-//            print("Distance From Wall: " + distanceFromWall);
         }
         //If the colliding object is the player
         if (collision.name == "Player")
@@ -127,13 +127,14 @@ public class Civilian : MonoBehaviour {
         }
     }
 
+    //Determine if NPC is colliding wiht player
     private void OnTriggerStay(Collider other)
     {
         if (nextToPlayer && other.name == "Player")
         {
-//            print(Vector3.Distance(other.transform.position, civTransform.position));
             float distanceFromPlayer = Vector3.Distance(other.transform.position, civTransform.position);
-//            print("Distance From Player: " + distanceFromPlayer);
+
+            //player is not hidden behind wall
             if (distanceFromPlayer < distanceFromWall)
             {
                 isTriggered = true;
@@ -149,30 +150,30 @@ public class Civilian : MonoBehaviour {
         timeInTrigger = 0.0f;
     }
 
-   
+
     //If the player collides with the civilian, set the player detected state to true
     private void OnCollisionEnter(Collision collision)
     {
         //Civilian is not an Android
-        
         if (!isAndroid)
         {
           stealthScript.DetectPlayer(index, true);
         }
-        
+
     }
-    
+
 
     //Kill civilian or Android
     public void kill()
     {
-      //Delete colliders and set rotation
-      //Android and civilian have different hierarchy on scene
-      if (isAndroid)
-      {
+        //Delete colliders and set rotation
         Destroy(GetComponent<NavMeshAI>());
+        this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Destroy(this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>());
+
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
+
         killCount++;
 		if (stealthScript.playerDetected) {
 			print ("Oops! You were seen :(");
@@ -191,7 +192,10 @@ public class Civilian : MonoBehaviour {
         print("Failed: Wrong target :(");
 		SceneManager.LoadScene ("QuitGame");
       }
-      //Disable calls to Update()
-      enabled = false;
+
+        //Disable calls to Update()
+        enabled = false;
+
+        Destroy(this.gameObject, 10.0f);
     }
 }
