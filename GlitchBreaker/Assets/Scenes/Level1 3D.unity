@@ -590,6 +590,14 @@ MonoBehaviour:
   eye: {fileID: 947941648}
   isAndroid: 1
   civilian: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
+  - {fileID: 21300000, guid: ac798436d2ff6844f90c41e4d415bd9d, type: 3}
+  - {fileID: 21300000, guid: 2fcb35ef86be4014492ddc2103c3a7a0, type: 3}
+  - {fileID: 21300000, guid: e55c439596b44d148b7ddf5d53f735c7, type: 3}
+  - {fileID: 21300000, guid: 345b2f8936d842447947f6861c116670, type: 3}
+  - {fileID: 21300000, guid: 98e924f121ccc2547813b366f6f8fcf6, type: 3}
+  androidSprite: {fileID: 21300000, guid: 3bfc855ca67f4a64a81b711d0aeda81f, type: 3}
 --- !u!54 &254336286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1711,6 +1719,8 @@ MonoBehaviour:
   eye: {fileID: 947941648}
   isAndroid: 0
   civilian: {fileID: 0}
+  sprites: []
+  androidSprite: {fileID: 0}
 --- !u!212 &1315736883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2228,7 +2238,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3bfc855ca67f4a64a81b711d0aeda81f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
