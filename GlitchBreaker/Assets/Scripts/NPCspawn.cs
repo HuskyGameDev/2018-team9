@@ -31,6 +31,7 @@ public class NPCspawn : MonoBehaviour {
 	void Update () {
 	}
 
+    //This method spawns civilians in random locations and makes sure they don't overlap with each other
 	void spawnCivilians(int i)
 	{
 		Vector3 position;			//Position to spawn game object
