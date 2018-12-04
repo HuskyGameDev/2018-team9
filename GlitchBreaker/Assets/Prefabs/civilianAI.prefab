@@ -85,7 +85,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -115,6 +115,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eye: {fileID: 0}
   isAndroid: 0
+  civilian: {fileID: 0}
+  sprites: []
+  androidSprite: {fileID: 0}
+  deadSprites:
+  - {fileID: 21300000, guid: 4a13eb5d86743064d9255fa6d87dffae, type: 3}
+  - {fileID: 21300000, guid: baad075b1eab3f544a1efbe5fbc4a558, type: 3}
+  - {fileID: 21300000, guid: ae14ac8e3ae494f40a67f584ec9372f3, type: 3}
+  - {fileID: 21300000, guid: 016076b962f9f3a4ba58839dc2277acf, type: 3}
+  - {fileID: 21300000, guid: a3b2ad776517f214382e179d5aa9afcb, type: 3}
+  - {fileID: 21300000, guid: 0b76110a43c37c94cab107d6ec551da1, type: 3}
+  spriteIndex: 0
 --- !u!114 &114529691772072844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +210,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29d20e4d60d592742a11b4d8642a48a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.56, y: 2.56}
