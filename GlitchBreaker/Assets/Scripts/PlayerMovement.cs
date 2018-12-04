@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))
 		{
 			//If player is colliding with a civilian or the Android
-			if (collision.collider.name == "Civilian" || collision.collider.name == "AI")
+			if (collision.collider.name.Contains("civilian") || collision.collider.name == "AI sprite")
 			{
 				//Get the Civilian script and call the kill method
 				civilianScript = collision.gameObject.GetComponent<Civilian>();
