@@ -224,7 +224,17 @@ public class Civilian : MonoBehaviour {
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
 
-        this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = deadSprites[spriteIndex];
+        //Change sprite when NPC dies
+        if (isAndroid)
+        {
+
+          this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = androidSprite;
+        }
+        else
+        {
+          this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = deadSprites[spriteIndex];
+        }
+
         Debug.Log(spriteIndex);
         //Disable calls to Update()
         enabled = false;
