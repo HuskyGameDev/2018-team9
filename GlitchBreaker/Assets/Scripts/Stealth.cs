@@ -6,6 +6,7 @@ public class Stealth : MonoBehaviour
 {
 
     SpriteRenderer spriteRenderer;
+	private Sprite[] sprite;
     GameObject civilians;
     NPCspawn npc;
     private int numCivilians = 0;
@@ -15,6 +16,7 @@ public class Stealth : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+		sprite = Resources.LoadAll<Sprite> ("EyeFlat");
         civilians = GameObject.FindGameObjectWithTag("Civilians");
         npc = civilians.GetComponent<NPCspawn>();
         numCivilians = npc.numCivilians;
@@ -42,11 +44,11 @@ public class Stealth : MonoBehaviour
         //Update the eye color if the player is detected
         if (playerDetected)
         {
-            spriteRenderer.color = Color.red;
+			spriteRenderer.sprite = sprite[1];
         }
         else
         {
-            spriteRenderer.color = Color.green;
+			spriteRenderer.sprite = sprite[2];
         }
     }
 }

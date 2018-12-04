@@ -2877,6 +2877,45 @@ Prefab:
       propertyPath: civilians
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 6d12521a5450a3e4ab53dd3f673cfc6b,
+        type: 3}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017551880899114, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017551880899114, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 6.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 212430628237330076, guid: ad3bbf455578b4a48b0828c38efd3cff,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 3.46
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad3bbf455578b4a48b0828c38efd3cff, type: 2}
   m_IsPrefabAsset: 0
