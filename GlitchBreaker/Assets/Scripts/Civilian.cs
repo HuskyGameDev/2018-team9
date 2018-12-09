@@ -114,7 +114,7 @@ public class Civilian : MonoBehaviour {
             if (Physics.Raycast(transform.position + new Vector3(posHit, 0.5f, 0), vec, out hit, Mathf.Infinity))
             {
                 //Get hitInCollider raycast for proximity
-                if (Physics.Raycast(transform.position + new Vector3(posColl, 0, 0), vec, out hitInCollider, Mathf.Infinity))
+                if (Physics.Raycast(transform.position + new Vector3(posColl, 0.5f, 0), vec, out hitInCollider, Mathf.Infinity))
                 {
                     if (CheckRayCast(hit, 5f))
                     {
