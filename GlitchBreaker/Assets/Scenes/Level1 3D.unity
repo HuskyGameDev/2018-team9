@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 195677686}
   - component: {fileID: 195677687}
   - component: {fileID: 195677688}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 195677682}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.669559, y: 0.5, z: 6.2745476}
+  m_LocalPosition: {x: 4.669559, y: 0.5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 651368786}
@@ -588,6 +588,7 @@ MonoBehaviour:
   agent: {fileID: 254336289}
   cam: {fileID: 1592321766}
   timer: 15
+  facingRight: 0
 --- !u!114 &254336285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,7 +1722,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &947941648
+--- !u!1 &947941648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1945111621238396, guid: ad3bbf455578b4a48b0828c38efd3cff,
     type: 2}
@@ -2292,6 +2293,7 @@ GameObject:
   - component: {fileID: 1670605432}
   - component: {fileID: 1670605433}
   - component: {fileID: 1670605434}
+  - component: {fileID: 1670605435}
   m_Layer: 0
   m_Name: AI sprite
   m_TagString: Untagged
@@ -2370,6 +2372,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.83, z: 0.5}
   m_Center: {x: 0.00000023841858, y: 0, z: -0.000000014901161}
+--- !u!135 &1670605435
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670605431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: -1, y: 0, z: 0}
 --- !u!1 &1734481608
 GameObject:
   m_ObjectHideFlags: 0

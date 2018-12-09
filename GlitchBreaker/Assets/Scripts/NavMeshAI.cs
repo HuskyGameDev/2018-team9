@@ -12,7 +12,7 @@ public class NavMeshAI : MonoBehaviour {
 	private Animator anim;
     private Vector3 newPosition;
     private Vector3 previousPosition; //Position in the previous frame
-    private bool facingRight = false;
+    public bool facingRight = false;
     private float facingTimer = 0;
 
     //initialization
@@ -55,8 +55,9 @@ public class NavMeshAI : MonoBehaviour {
                 this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 facingRight = true;
                 facingTimer = 0;
+                this.gameObject.transform.GetChild(0).gameObject.GetComponent<SphereCollider>().center = new Vector3(-1, 0);
             }
-         }
+        }
          //Walking left
          else if (this.transform.position.x < previousPosition.x)
          {
@@ -65,6 +66,7 @@ public class NavMeshAI : MonoBehaviour {
                 this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 facingRight = false;
                 facingTimer = 0;
+                this.gameObject.transform.GetChild(0).gameObject.GetComponent<SphereCollider>().center = new Vector3(1, 0);
             }
          }
 
