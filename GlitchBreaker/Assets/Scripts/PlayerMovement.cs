@@ -10,11 +10,14 @@ public class PlayerMovement : MonoBehaviour {
 	private bool facingRight = false;
 	private SpriteRenderer sprite;
 	private Animator anim;
+	public AudioClip myclip;
 
 	// Use this for initialization
 	void Start () {
 		sprite = GetComponent<SpriteRenderer>();
 		anim = GetComponent<Animator>();
+		this.gameObject.AddComponent<AudioSource>();
+        this.GetComponent<AudioSource>().clip = myclip;
 	}
 
 	// Update is called once per frame
@@ -67,6 +70,8 @@ public class PlayerMovement : MonoBehaviour {
 				//Get the Civilian script and call the kill method
 				civilianScript = collision.gameObject.GetComponent<Civilian>();
 				civilianScript.kill();
+				this.GetComponent<AudioSource>().Play();
+				DontDestroyOnLoad(this.gameObject);
 				//Destroy(collision.gameObject);
 			}
 		}

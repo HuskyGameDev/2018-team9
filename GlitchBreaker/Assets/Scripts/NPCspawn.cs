@@ -31,6 +31,7 @@ public class NPCspawn : MonoBehaviour {
 	void Update () {
 	}
 
+    //This method spawns civilians in random locations and makes sure they don't overlap with each other
 	void spawnCivilians(int i)
 	{
 		Vector3 position;			//Position to spawn game object
@@ -46,6 +47,7 @@ public class NPCspawn : MonoBehaviour {
 
 		//Instantiate game object and set components that can't be assigned in prefab
 		civilianInstance = Instantiate(civilianPrefab, position, rotation);
+        civilianInstance.GetComponent<Civilian>().spriteIndex = i;
 		civilianInstance.transform.SetParent(GameObject.Find("Civilians").transform);
 		civilianInstance.GetComponent<Civilian>().eye = eye;
 		civilianInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprites[i%sprites.Length];

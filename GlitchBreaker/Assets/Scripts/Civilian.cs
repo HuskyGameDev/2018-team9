@@ -26,6 +26,8 @@ public class Civilian : MonoBehaviour {
     private int glitchProbability = 1;
     private float gameTimeCount;
     private float glitchIncreaseTimer = 45f;
+    public Sprite[] deadSprites;
+    public int spriteIndex;
 
 
 	// Use this for initialization
@@ -222,7 +224,18 @@ public class Civilian : MonoBehaviour {
         Destroy(this.gameObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         this.gameObject.transform.GetChild(0).gameObject.transform.Rotate(0,0,90);
 
+        //Change sprite when NPC dies
+        if (isAndroid)
+        {
 
+          this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = androidSprite;
+        }
+        else
+        {
+          this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = deadSprites[spriteIndex];
+        }
+
+        Debug.Log(spriteIndex);
         //Disable calls to Update()
         enabled = false;
 
