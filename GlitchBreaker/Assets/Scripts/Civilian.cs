@@ -41,10 +41,10 @@ public class Civilian : MonoBehaviour {
         index = civTransform.GetSiblingIndex();
 
         //Don't run the Update() method if the NPC is an Android
-        if (!isAndroid)
-        {
+ //       if (!isAndroid)
+ //       {
           stealthScript = eye.GetComponent<Stealth>();
-        }
+ //       }
 	}
 
 	// Update is called once per frame
