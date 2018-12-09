@@ -148,10 +148,10 @@ SphereCollider:
   m_GameObject: {fileID: 1449493982150062}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.5
-  m_Center: {x: 1, y: 0, z: 0}
+  m_Center: {x: -1, y: 0, z: 0}
 --- !u!195 &195126116153463504
 NavMeshAgent:
   m_ObjectHideFlags: 1

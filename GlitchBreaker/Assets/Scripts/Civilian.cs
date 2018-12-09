@@ -97,18 +97,20 @@ public class Civilian : MonoBehaviour {
         RaycastHit hit; //Hit detects if the player is in the NPCs point of view
         RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
 
-        //Get hit raycast for point of view
-        if (Physics.Raycast(transform.position + new Vector3(5f, 0, 0), Vector3.right, out hit, Mathf.Infinity))
+            //Get hit raycast for point of view
+            Debug.DrawRay(transform.position + new Vector3(5f, 0.5f, 0), Vector3.right, Color.blue, Mathf.Infinity);
+        if (Physics.Raycast(transform.position + new Vector3(5f, 0.5f, 0), Vector3.right, out hit, Mathf.Infinity))
         {
-          //Get hitInCollider raycast for proximity
+          //Get hitInCollider raycast for proximit
+          Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, Color.blue, Mathf.Infinity);
           if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
           {
             if (CheckRayCast(hit, 5f))
             {
                 stealthScript.DetectPlayer(index, true);
-              }
-              else if (CheckRayCast(hitInCollider, 1.5f))
-              {
+             }
+             else if (CheckRayCast(hitInCollider, 1.5f))
+             {
                 stealthScript.DetectPlayer(index, true);
               }
               else
@@ -123,6 +125,7 @@ public class Civilian : MonoBehaviour {
     private bool CheckRayCast(RaycastHit hit, float distance)
     {
         if (hit.collider != null) {
+
             if (hit.collider.gameObject.name == "Player")
             {
                 return true;
