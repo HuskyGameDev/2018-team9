@@ -28,6 +28,7 @@ public class Civilian : MonoBehaviour {
     private float glitchIncreaseTimer = 45f;
     public Sprite[] deadSprites;
     public int spriteIndex;
+    private NavMeshAI nav;
 
 
 	// Use this for initialization
@@ -35,6 +36,7 @@ public class Civilian : MonoBehaviour {
 
         eye = GameObject.FindGameObjectWithTag("Eye");
         civilian = this.gameObject;
+        nav = civilian.GetComponent<NavMeshAI>();
         civTransform = civilian.transform;
         index = civTransform.GetSiblingIndex();
 
@@ -51,7 +53,7 @@ public class Civilian : MonoBehaviour {
    *
    */
 	void Update ()
-  {
+    {
       //Run this portion only for the android
       if (isAndroid)
       {
@@ -94,32 +96,41 @@ public class Civilian : MonoBehaviour {
       //Run this portion only for civilians
       else
       {
-        RaycastHit hit; //Hit detects if the player is in the NPCs point of view
-        RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
+          RaycastHit hit; //Hit detects if the player is in the NPCs point of view
+            RaycastHit hitInCollider; //hitInCollider detects if the player is in proximity of the NPC
 
             //Get hit raycast for point of view
-            Debug.DrawRay(transform.position + new Vector3(5f, 0.5f, 0), Vector3.right, Color.blue, Mathf.Infinity);
-        if (Physics.Raycast(transform.position + new Vector3(5f, 0.5f, 0), Vector3.right, out hit, Mathf.Infinity))
-        {
-          //Get hitInCollider raycast for proximit
-          Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, Color.blue, Mathf.Infinity);
-          if (Physics.Raycast(transform.position + new Vector3(1.5f, 0, 0), Vector3.right, out hitInCollider, Mathf.Infinity))
-          {
-            if (CheckRayCast(hit, 5f))
+            float posHit = 5f;
+            Vector3 vec = Vector3.right;
+            float posColl = 1.5f;
+
+            if (!nav.facingRight)
             {
-                stealthScript.DetectPlayer(index, true);
-             }
-             else if (CheckRayCast(hitInCollider, 1.5f))
-             {
-                stealthScript.DetectPlayer(index, true);
-              }
-              else
-              {
-                  DetectPlayer();
-              }
+                vec = Vector3.left;
+                posHit = -5f;
+                posColl = -1.5f;
             }
-          }
-        }
+        
+            if (Physics.Raycast(transform.position + new Vector3(posHit, 0.5f, 0), vec, out hit, Mathf.Infinity))
+            {
+                //Get hitInCollider raycast for proximity
+                if (Physics.Raycast(transform.position + new Vector3(posColl, 0, 0), vec, out hitInCollider, Mathf.Infinity))
+                {
+                    if (CheckRayCast(hit, 5f))
+                    {
+                        stealthScript.DetectPlayer(index, true);
+                    }
+                    else if (CheckRayCast(hitInCollider, 1.5f))
+                    {
+                     stealthScript.DetectPlayer(index, true);
+                    }
+                    else
+                    {
+                          DetectPlayer();
+                    }
+                }
+            }
+      }
     }
 
     private bool CheckRayCast(RaycastHit hit, float distance)

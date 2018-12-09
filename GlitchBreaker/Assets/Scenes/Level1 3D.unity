@@ -588,6 +588,7 @@ MonoBehaviour:
   agent: {fileID: 254336289}
   cam: {fileID: 1592321766}
   timer: 15
+  facingRight: 0
 --- !u!114 &254336285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,7 +2130,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e55c439596b44d148b7ddf5d53f735c7, type: 3}
   - {fileID: 21300000, guid: 345b2f8936d842447947f6861c116670, type: 3}
   - {fileID: 21300000, guid: 98e924f121ccc2547813b366f6f8fcf6, type: 3}
-  numCivilians: 1
+  numCivilians: 6
 --- !u!4 &1586914314
 Transform:
   m_ObjectHideFlags: 0

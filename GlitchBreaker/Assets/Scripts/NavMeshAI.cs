@@ -12,7 +12,7 @@ public class NavMeshAI : MonoBehaviour {
 	private Animator anim;
     private Vector3 newPosition;
     private Vector3 previousPosition; //Position in the previous frame
-    private bool facingRight = false;
+    public bool facingRight = false;
     private float facingTimer = 0;
 
     //initialization
