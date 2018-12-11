@@ -613,6 +613,7 @@ MonoBehaviour:
   androidSprite: {fileID: 21300000, guid: 3bfc855ca67f4a64a81b711d0aeda81f, type: 3}
   deadSprites: []
   spriteIndex: 0
+  GM: {fileID: 358475074}
 --- !u!54 &254336286
 Rigidbody:
   m_ObjectHideFlags: 0

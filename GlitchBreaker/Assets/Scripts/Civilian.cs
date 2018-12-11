@@ -29,6 +29,8 @@ public class Civilian : MonoBehaviour {
     public Sprite[] deadSprites;
     public int spriteIndex;
     private NavMeshAI nav;
+    public GameManager GM;
+    private IEnumerator coroutine;
 
 
 	// Use this for initialization
@@ -45,6 +47,7 @@ public class Civilian : MonoBehaviour {
  //       {
           stealthScript = eye.GetComponent<Stealth>();
  //       }
+        coroutine = WaitforPauseMenu();
 	}
 
 	// Update is called once per frame
@@ -110,7 +113,7 @@ public class Civilian : MonoBehaviour {
                 posHit = -5f;
                 posColl = -1.5f;
             }
-        
+
             if (Physics.Raycast(transform.position + new Vector3(posHit, 0.5f, 0), vec, out hit, Mathf.Infinity))
             {
                 //Get hitInCollider raycast for proximity
@@ -241,7 +244,8 @@ public class Civilian : MonoBehaviour {
         //Change sprite when NPC dies
         if (isAndroid)
         {
-
+          //Bring up the pause menu after 1 second
+          StartCoroutine(coroutine);
           this.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = androidSprite;
         }
         else
@@ -254,5 +258,12 @@ public class Civilian : MonoBehaviour {
         enabled = false;
 
         Destroy(this.gameObject, 10.0f);
+    }
+
+    //Bring up the pause menu 1 second after killing the android
+    private IEnumerator WaitforPauseMenu()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GM.TogglePauseMenu();
     }
 }
